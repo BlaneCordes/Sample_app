@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UsersController do
   render_views
 
-  describe "GET 'show'" do
+describe "GET 'show'" do
     
     before(:each) do
       @user = Factory(:user)
