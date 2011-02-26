@@ -22,7 +22,7 @@ describe "LayoutLinks" do
     response.should have_selector('title', :content => "Help")
   end
   
-    it "should have a signup page at '/signup'" do
+    it "should have a Sign up page at '/signup'" do
       get '/signup'
       response.should have_selector('title', :content => "Sign up")
   end
@@ -41,7 +41,7 @@ describe "LayoutLinks" do
     response.should have_selector('title', :content => "Contact")
     click_link "Home"
     response.should have_selector('title', :content => "Home")
-    click_link "Sign up now!"
+    click_link "Sign up"
     response.should have_selector('title', :content => "Sign Up")
     response.should have_selector('a[href="/"]>img')
   end
@@ -69,12 +69,19 @@ describe "LayoutLinks" do
         response.should have_selector("a", :href => signout_path,
                                            :content => "Sign out")
       end
-          it "should have a profile link" do
-            visit root_path
-            response.should have_selector("a", :href => user_path(@user),
+      
+      it "should have a profile link" do
+        visit root_path
+        response.should have_selector("a", :href => user_path(@user),
                                                :content => "Profile")
-          end
-        end
       end
+      
+      it "should have a settings link" do
+        visit root_path
+        response.should have_selector("a", :href => edit_user_path(@user),
+                                           :content => "Settings")
+      end
+    end
+  end
 
 
